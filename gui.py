@@ -22,7 +22,7 @@ def entrar(e1, e2):
     if resultado:
         print('Foi')
     else:
-        print('Não foi kkj')
+        print('Não foi')
 
 def login(root):        
     t1 = tk.Label(root, text="Tela de Login")
@@ -40,7 +40,7 @@ def login(root):
     e2 = tk.Entry(root, show="*")
     e2.pack()
     
-    b1 = tk.Button(root, text="Entrar", command=lambda:entrar(e1, e2))
+    b1 = tk.Button(root, text="Entrar", command=entrar(e1, e2))
     b1.pack()
 
 
