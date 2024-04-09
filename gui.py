@@ -6,14 +6,26 @@ connection=sqlite3.connect("acc.db")
 
 cursor=connection.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER)")
+cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER)")
 
 cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
 
 
+        
 
-def entrar(e1, e2):
+
+def tel_acc(root):
+    print('2')
+    for widget in root.winfo_children():
+        widget.destroy()
+    
+    t1 = tk.Label(root, text="Tela de Investimentos")
+    t1.pack()
+
+
+
+def entrar(e1, e2, login_fame, root):
     print('1')
     conta = e1.get()
     senha = e2.get()
@@ -21,10 +33,17 @@ def entrar(e1, e2):
     resultado = cursor.fetchone()
     if resultado:
         print('Foi')
+        login_fame.pack_forget
+        tel_acc(root)
     else:
         print('Não foi')
 
 def login(root):        
+
+    login_frame = tk.Frame(root)
+
+
+
     t1 = tk.Label(root, text="Tela de Login")
     t1.pack()
 
@@ -40,7 +59,7 @@ def login(root):
     e2 = tk.Entry(root, show="*")
     e2.pack()
     
-    b1 = tk.Button(root, text="Entrar", command=lambda:entrar(e1, e2))
+    b1 = tk.Button(root, text="Entrar", command=lambda:entrar(e1, e2, login_frame, root))
     b1.pack()
 
 
