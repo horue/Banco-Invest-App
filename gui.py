@@ -40,7 +40,7 @@ def login(root):
     e2 = tk.Entry(root, show="*")
     e2.pack()
     
-    b1 = tk.Button(root, text="Entrar", command=entrar(e1, e2))
+    b1 = tk.Button(root, text="Entrar", command=lambda:entrar(e1, e2))
     b1.pack()
 
 
