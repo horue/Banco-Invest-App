@@ -13,7 +13,7 @@ def entrar(e1, e2):
     print('1')
     conta = e1.get()
     senha = e2.get()
-    cursor.execute(f"SELECT * FROM usuarios WHERE(conta={conta} AND senha={senha}")
+    cursor.execute(f"SELECT * FROM clientes WHERE(conta={conta} AND senha={senha}")
     resultado = cursor.fetchone()
     if resultado:
         print('Foi')
@@ -24,7 +24,7 @@ def entrar(e1, e2):
 
 def principal():
     root = tk.Tk()
-    root.title("Banco Calin Peladinho")
+    root.title("Banco Invest")
     root.resizable(True, True)
         
     t1 = tk.Label(root, text="Tela de Login")
