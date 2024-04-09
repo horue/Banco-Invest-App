@@ -2,17 +2,21 @@ import tkinter as tk
 import sqlite3
 
 
-connection=sqlite3.connect("class.db")
+connection=sqlite3.connect("acc.db")
 
 cursor=connection.cursor()
+
+cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER)")
+
+cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
 
 
 
 def entrar(e1, e2):
     print('1')
-    conta = e1.get()
-    senha = e2.get()
+    conta = e1.get(e1)
+    senha = e2.get(e2)
     cursor.execute(f"SELECT * FROM clientes WHERE(conta={conta} AND senha={senha}")
     resultado = cursor.fetchone()
     if resultado:
