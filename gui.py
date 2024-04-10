@@ -41,7 +41,7 @@ def tel_acc(root):
     b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv(root))
     b1.pack()
 
-    b2 = tk.Button(root, text="Voltar à tela inicial", command=login(root))
+    b2 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
     b2.pack()
 
 
