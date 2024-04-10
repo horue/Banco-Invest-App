@@ -23,6 +23,15 @@ def tela_inv(root):
     
     t1 = tk.Label(root, text="Tela de Investimentos")
     t1.pack()
+
+    b1 = tk.Button(root, text="Investimento na Apple", command=lambda:tela_inv(root))
+    b1.pack()
+
+    b1 = tk.Button(root, text="Investimento na Microsoft", command=lambda:tela_inv(root))
+    b1.pack()
+
+    t1 = tk.Label(root, text="Seus lucros")
+    t1.pack()
     
 
 
