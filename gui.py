@@ -138,6 +138,9 @@ def login(root):
     b1 = tk.Button(root, text="Entrar", command=lambda:entrar(e1, e2, login_frame, root))
     b1.pack()
 
+    exit = tk.Button(root, text="Sair", command=root.destroy)
+    exit.pack()
+
 
 
 
