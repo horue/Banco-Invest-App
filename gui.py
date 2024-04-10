@@ -42,8 +42,17 @@ def tel_acc(root):
     print('2')
     for widget in root.winfo_children():
         widget.destroy()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()    
     
     t1 = tk.Label(root, text="Sua conta")
+    t1.pack()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()
+
+    t1 = tk.Label(root, text="Olá, seja bem vindo!")
     t1.pack()
 
 
@@ -75,10 +84,14 @@ def login(root):
     for widget in root.winfo_children():
         widget.destroy()
 
-
+    t2 = tk.Label(root, text="")
+    t2.pack()
 
     t1 = tk.Label(root, text="Tela de Login")
     t1.pack()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()
 
     t2 = tk.Label(root, text="Conta")
     t2.pack()
@@ -91,6 +104,9 @@ def login(root):
 
     e2 = tk.Entry(root, show="*")
     e2.pack()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()
     
     b1 = tk.Button(root, text="Entrar", command=lambda:entrar(e1, e2, login_frame, root))
     b1.pack()
