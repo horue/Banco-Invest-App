@@ -14,6 +14,28 @@ cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
 
 
+def tela_ms(root):
+    for widget in root.winfo_children():
+        widget.destroy()
+    
+    t1 = tk.Label(root, text="Tela de Investimentos")
+    t1.pack()
+
+    t2 = tk.Label(root, text="Investimento na Microsoft")
+    t2.pack()
+
+    textoSlider = tk.StringVar()
+    w1 = tk.Scale(root, from_=0, to=50, orient=tk.HORIZONTAL)
+    w1["command"] = lambda x:textoSlider.set(w1.get())
+    w1.pack()
+
+    t1 = tk.Label(root, text="Seus lucros")
+    t1.pack()
+
+    b1 = tk.Button(root, text="Voltar", command=lambda:tela_inv(root))
+    b1.pack()
+    
+
 
 
 
@@ -51,7 +73,7 @@ def tela_inv(root):
     b1 = tk.Button(root, text="Investimento na Apple", command=lambda:tela_apple(root))
     b1.pack()
 
-    b2 = tk.Button(root, text="Investimento na Microsoft", command=lambda:tela_inv(root))
+    b2 = tk.Button(root, text="Investimento na Microsoft", command=lambda:tela_ms(root))
     b2.pack()
 
     t1 = tk.Label(root, text="Seus lucros")
