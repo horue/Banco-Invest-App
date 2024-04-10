@@ -51,11 +51,14 @@ def tela_inv(root):
     b1 = tk.Button(root, text="Investimento na Apple", command=lambda:tela_apple(root))
     b1.pack()
 
-    b1 = tk.Button(root, text="Investimento na Microsoft", command=lambda:tela_inv(root))
-    b1.pack()
+    b2 = tk.Button(root, text="Investimento na Microsoft", command=lambda:tela_inv(root))
+    b2.pack()
 
     t1 = tk.Label(root, text="Seus lucros")
     t1.pack()
+
+    b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root))
+    b3.pack()
     
 
 
