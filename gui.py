@@ -13,7 +13,20 @@ cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
 
 
+
+
         
+
+def tela_inv(root):
+    for widget in root.winfo_children():
+        widget.destroy()
+    
+    t1 = tk.Label(root, text="Tela de Investimentos")
+    t1.pack()
+    
+
+
+
 
 
 def tel_acc(root):
@@ -21,8 +34,12 @@ def tel_acc(root):
     for widget in root.winfo_children():
         widget.destroy()
     
-    t1 = tk.Label(root, text="Tela de Investimentos")
+    t1 = tk.Label(root, text="Sua conta")
     t1.pack()
+
+
+    b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv())
+    b1.pack()
 
 
 
