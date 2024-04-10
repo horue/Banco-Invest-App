@@ -24,11 +24,19 @@ def tela_apple(root):
     t1 = tk.Label(root, text="Tela de Investimentos")
     t1.pack()
 
-    b1 = tk.Label(root, text="Investimento na Apple")
-    b1.pack()
+    t2 = tk.Label(root, text="Investimento na Apple")
+    t2.pack()
+
+    textoSlider = tk.StringVar()
+    w1 = tk.Scale(root, from_=0, to=50, orient=tk.HORIZONTAL)
+    w1["command"] = lambda x:textoSlider.set(w1.get())
+    w1.pack()
 
     t1 = tk.Label(root, text="Seus lucros")
     t1.pack()
+
+    b1 = tk.Button(root, text="Voltar", command=lambda:tela_inv(root))
+    b1.pack()
     
 
         
