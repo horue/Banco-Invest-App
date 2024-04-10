@@ -38,8 +38,11 @@ def tel_acc(root):
     t1.pack()
 
 
-    b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv())
+    b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv(root))
     b1.pack()
+
+    b2 = tk.Button(root, text="Voltar à tela inicial", command=login(root))
+    b2.pack()
 
 
 
@@ -59,6 +62,9 @@ def entrar(e1, e2, login_fame, root):
 def login(root):        
 
     login_frame = tk.Frame(root)
+
+    for widget in root.winfo_children():
+        widget.destroy()
 
 
 
