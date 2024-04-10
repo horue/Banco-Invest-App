@@ -178,7 +178,3 @@ def principal():
     root.update()
     root.deiconify()
     root.mainloop() 
-
-
-
-principal()
