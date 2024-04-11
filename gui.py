@@ -11,7 +11,17 @@ cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTER
 
 cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
-
+def add_nc(e1, e2, e3, root):
+    print('1')
+    nome = e1.get()
+    conta = e2.get()
+    senha = e3.get()
+    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}')")
+    resultado = cursor.fetchone()
+    if resultado:
+        print('Foi')
+    else:
+        print('Não foi')
 
 
 def tela_nc(root):
@@ -48,7 +58,7 @@ def tela_nc(root):
     e3 = tk.Entry(root)
     e3.pack()
 
-    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:entrar(e1, e2, e3, root))
+    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2, e3, root))
     b1.pack()
 
 
@@ -103,6 +113,10 @@ def tela_ms(root):
     t1.pack()
 
     b1 = tk.Button(root, text="Voltar", command=lambda:tela_inv(root))
+    b1.pack()
+
+    
+    b1 = tk.Button(root, text="a", command=lambda:tel_adm(root))
     b1.pack()
     
 
