@@ -167,7 +167,7 @@ def login(root):
 
 
 
-def principal():
+def main():
     root = tk.Tk()
     root.title("Banco Invest")
     root.resizable(True, True)
