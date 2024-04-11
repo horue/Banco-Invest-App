@@ -11,7 +11,7 @@ cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTER
 
 cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
-def add_nc(e1, e2, e3, root):
+def add_nc(e1, e2, e3):
     print('1')
     nome = e1.get()
     conta = e2.get()
