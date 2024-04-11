@@ -14,6 +14,76 @@ cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
 
 
+def tela_nc(root):
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()    
+    
+    t1 = tk.Label(root, text="Tela do Administrador")
+    t1.pack()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()
+
+    t3 = tk.Label(root, text='Adicionar novo cliente')
+    t3.pack
+
+    t4 = tk.Label(root, text="Nome do Cliente")
+    t4.pack()
+
+    e1 = tk.Entry(root)
+    e1.pack()
+
+    t5 = tk.Label(root, text="Número da Conta")
+    t5.pack()
+
+    e2 = tk.Entry(root)
+    e2.pack()
+
+    t6 = tk.Label(root, text="Senha")
+    t6.pack()
+
+    e3 = tk.Entry(root)
+    e3.pack()
+
+    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:entrar(e1, e2, e3, root))
+    b1.pack()
+
+
+def tel_adm(root):
+    print('2')
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()    
+    
+    t1 = tk.Label(root, text="Tela do Administrador")
+    t1.pack()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()
+
+    t1 = tk.Label(root, text="Olá, seja bem vindo!")
+    t1.pack()
+
+
+    b1 = tk.Button(root, text="Adicionar Investimento", command=lambda:tela_ni(root))
+    b1.pack()
+
+    b2 = tk.Button(root, text="Adicionar Novo Cliente", command=lambda:tela_nc(root))
+    b2.pack()
+
+
+    b3 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+    b3.pack()
+
+
+
+
+
 def tela_ms(root):
     for widget in root.winfo_children():
         widget.destroy()
