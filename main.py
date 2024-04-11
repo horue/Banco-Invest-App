@@ -1,5 +1,5 @@
-from gui import principal
+from gui import main
 
 
 
-principal()
+main()
