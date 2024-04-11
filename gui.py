@@ -19,6 +19,7 @@ def add_nc(e1, e2, e3):
     cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha})")
     connection.commit
     resultado = cursor.fetchone()
+    mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
     if resultado:
         print('Foi')
     else:
@@ -59,7 +60,7 @@ def tela_nc(root):
     e3 = tk.Entry(root)
     e3.pack()
 
-    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2, e3, root))
+    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2, e3))
     b1.pack()
 
     
