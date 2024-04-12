@@ -26,6 +26,46 @@ def add_nc(e1, e2, e3):
         print('Não foi')
 
 
+
+def tela_ni(root):
+    for widget in root.winfo_children():
+        widget.destroy()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()    
+    
+    t1 = tk.Label(root, text="Tela do Administrador")
+    t1.pack()
+
+    t2 = tk.Label(root, text="")
+    t2.pack()
+
+    t3 = tk.Label(root, text='Adicionar novo investimento')
+    t3.pack
+
+    t4 = tk.Label(root, text="Nome do Investimento")
+    t4.pack()
+
+    e1 = tk.Entry(root)
+    e1.pack()
+
+    t5 = tk.Label(root, text="Valor das Ações")
+    t5.pack()
+
+    e2 = tk.Entry(root)
+    e2.pack()
+
+
+    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2))
+    b1.pack()
+
+    
+    b2 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+    b2.pack()
+
+
+
+
 def tela_nc(root):
     for widget in root.winfo_children():
         widget.destroy()
