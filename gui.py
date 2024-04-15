@@ -253,6 +253,7 @@ def entrar(e1, e2, login_fame, root):
         tel_acc(root, nomeCliente)
     else:
         print('Não foi')
+        mb.showinfo('Erro', 'Conta ou senha incorretos.')
 
 def login(root):        
 
