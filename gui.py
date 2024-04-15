@@ -7,8 +7,11 @@ connection=sqlite3.connect("acc.db")
 
 cursor=connection.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER)")
-cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
+cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR)")
+cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'f' )")
+
+cursor.execute("CREATE TABLE IF NOT EXISTS adim (Conta INTERGER, Senha INTERGER, Nome STR)")
+cursor.execute(f"INSERT INTO adim VALUES(99, 99, 'pi')")
 
 cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT)")
 cursor.execute(f"INSERT INTO investimentos VALUES ('Apple')")
@@ -22,7 +25,7 @@ def add_nc(e1, e2, e3):
     nome = e1.get()
     conta = e2.get()
     senha = e3.get()
-    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha})")
+    cursor.execute(f"INSERT INTO clientes VALUES ('{nome}',{conta}, {senha})")
     connection.commit
     resultado = cursor.fetchone()
     mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
@@ -228,8 +231,7 @@ def tela_inv(root):
     b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root))
     b3.pack()
 
-    b2 = tk.Button(root, text="a", command=lambda:tel_adm(root))
-    b2.pack()
+    
     
 
 
@@ -267,11 +269,18 @@ def entrar(e1, e2, login_fame, root):
     conta = e1.get()
     senha = e2.get()
     cursor.execute(f"SELECT * FROM clientes WHERE(conta={conta} AND senha={senha})")
-    resultado = cursor.fetchone()
-    if resultado:
+    
+    resultado1 = cursor.fetchone()
+    cursor.execute(f"SELECT * FROM adim WHERE(Conta={conta} AND Senha={senha})")
+    resultado2 = cursor.fetchone()
+  
+    if resultado1:
         print('Foi')
         login_fame.pack_forget
         tel_acc(root)
+    elif resultado2:
+        login_fame.pack_forget
+        tel_adm(root)
     else:
         print('Não foi')
 
