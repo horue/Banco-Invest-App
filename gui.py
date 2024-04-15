@@ -17,12 +17,13 @@ cursor.execute(f"INSERT INTO investimentos VALUES ('Apple')")
 
 
 
-def add_nc(e1, e2, e3):
+def add_nc(e1, e2, e3, e4):
     print('1')
     nome = e1.get()
     conta = e2.get()
     senha = e3.get()
-    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha})")
+    cpf = e4.get()
+    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}', {cpf})")
     connection.commit
     resultado = cursor.fetchone()
     mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
@@ -114,7 +115,15 @@ def tela_nc(root):
     e3 = tk.Entry(root)
     e3.pack()
 
-    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2, e3))
+
+    t7 = tk.Label(root, text="CPF")
+    t7.pack()
+
+    e4 = tk.Entry(root)
+    e4.pack()
+
+
+    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2, e3, e4))
     b1.pack()
 
     
