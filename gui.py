@@ -214,7 +214,7 @@ def tela_inv(root):
 
 
 
-def tel_acc(root):
+def tel_acc(root, nomeCliente):
     print('2')
     for widget in root.winfo_children():
         widget.destroy()
@@ -228,7 +228,7 @@ def tel_acc(root):
     t2 = tk.Label(root, text="")
     t2.pack()
 
-    t1 = tk.Label(root, text="Olá, seja bem vindo!")
+    t1 = tk.Label(root, text=f"Olá, {nomeCliente}, seja bem vindo!")
     t1.pack()
 
 
@@ -244,12 +244,13 @@ def entrar(e1, e2, login_fame, root):
     print('1')
     conta = e1.get()
     senha = e2.get()
-    cursor.execute(f"SELECT * FROM clientes WHERE(conta={conta} AND senha={senha})")
+    cursor.execute(f"SELECT nome FROM clientes WHERE(conta={conta} AND senha={senha})")
     resultado = cursor.fetchone()
     if resultado:
+        nomeCliente = resultado[0]
         print('Foi')
         login_fame.pack_forget
-        tel_acc(root)
+        tel_acc(root, nomeCliente)
     else:
         print('Não foi')
 
