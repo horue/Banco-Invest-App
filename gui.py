@@ -34,6 +34,10 @@ def add_nc(e1, e2, e3):
 
 def add_ni(e1):
     print('teste')
+    nome = e1.get()
+    cursor.execute(f"INSERT INTO investimentos VALUES ('{nome}')")
+    connection.commit
+    mb.showinfo('Sucesso.', f'O investimento {nome} foi adicionado!')
 
 
 
@@ -223,6 +227,9 @@ def tela_inv(root):
 
     b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root))
     b3.pack()
+
+    b2 = tk.Button(root, text="a", command=lambda:tel_adm(root))
+    b2.pack()
     
 
 
