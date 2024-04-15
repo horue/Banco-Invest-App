@@ -8,7 +8,7 @@ connection=sqlite3.connect("acc.db")
 cursor=connection.cursor()
 
 cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER)")
-cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
+cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'Haroldo', 12332112332)")
 
 cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT)")
 cursor.execute(f"INSERT INTO investimentos VALUES ('Apple')")
@@ -152,45 +152,14 @@ def tel_adm(root):
 
 
 
-
-
-def tela_ms(root):
+def tela_inv2(root, nomeInvestimento):
     for widget in root.winfo_children():
         widget.destroy()
     
     t1 = tk.Label(root, text="Tela de Investimentos")
     t1.pack()
 
-    t2 = tk.Label(root, text="Investimento na Microsoft")
-    t2.pack()
-
-    textoSlider = tk.StringVar()
-    w1 = tk.Scale(root, from_=0, to=50, orient=tk.HORIZONTAL)
-    w1["command"] = lambda x:textoSlider.set(w1.get())
-    w1.pack()
-
-    t1 = tk.Label(root, text="Seus lucros")
-    t1.pack()
-
-    b1 = tk.Button(root, text="Voltar", command=lambda:tela_inv(root))
-    b1.pack()
-
-    
-    b1 = tk.Button(root, text="a", command=lambda:tel_adm(root))
-    b1.pack()
-    
-
-
-
-
-def tela_apple(root):
-    for widget in root.winfo_children():
-        widget.destroy()
-    
-    t1 = tk.Label(root, text="Tela de Investimentos")
-    t1.pack()
-
-    t2 = tk.Label(root, text="Investimento na Apple")
+    t2 = tk.Label(root, text=f"Investimento {nomeInvestimento}")
     t2.pack()
 
     textoSlider = tk.StringVar()
@@ -219,7 +188,7 @@ def tela_inv(root):
 
     for investimentos in investimento:
         nomeInvestimento = investimentos[0]
-        b1=tk.Button(root, text=nomeInvestimento)
+        b1=tk.Button(root, text=nomeInvestimento, command=lambda:tela_inv2(root, nomeInvestimento))
         b1.pack()
 
     t1 = tk.Label(root, text="Seus lucros")
