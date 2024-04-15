@@ -8,8 +8,12 @@ connection=sqlite3.connect("acc.db")
 cursor=connection.cursor()
 
 cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER)")
-
 cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
+
+cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome STR)")
+
+
+
 
 def add_nc(e1, e2, e3):
     print('1')
@@ -24,6 +28,10 @@ def add_nc(e1, e2, e3):
         print('Foi')
     else:
         print('Não foi')
+
+
+def add_ni(e1):
+    print('teste')
 
 
 
@@ -56,7 +64,7 @@ def tela_ni(root):
     e2.pack()
 
 
-    b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2))
+    b1 = tk.Button(root, text="Adicionar Investimento", command=lambda:add_ni(e1))
     b1.pack()
 
     
@@ -200,11 +208,13 @@ def tela_inv(root):
     t1 = tk.Label(root, text="Tela de Investimentos")
     t1.pack()
 
-    b1 = tk.Button(root, text="Investimento na Apple", command=lambda:tela_apple(root))
-    b1.pack()
+    cursor.execute("SELECT nome FROM investimentos")
+    investimento=cursor.fetchall()
 
-    b2 = tk.Button(root, text="Investimento na Microsoft", command=lambda:tela_ms(root))
-    b2.pack()
+    for investimentos in investimento:
+        nomeInvestimento = investimentos[0]
+        b1=tk.Button(root, text=nomeInvestimento)
+        b1.pack()
 
     t1 = tk.Label(root, text="Seus lucros")
     t1.pack()
