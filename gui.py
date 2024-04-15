@@ -27,11 +27,12 @@ def add_nc(e1, e2, e3, e4, e5):
     cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}', {cpf}, {renda})")
     connection.commit
     resultado = cursor.fetchone()
-    mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
     if resultado:
         print('Foi')
+        mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
     else:
         print('Não foi')
+        mb.showinfo('Erro.' f'Ocorreu um erro ao tentar criar a conta do(a) cliente {nome}. Tente novamente.')
 
 
 def add_ni(e1):
@@ -192,7 +193,7 @@ def tela_inv2(root, nomeInvestimento):
 
         
 
-def tela_inv(root):
+def tela_inv(root, nomeCliente):
     for widget in root.winfo_children():
         widget.destroy()
     
@@ -210,7 +211,7 @@ def tela_inv(root):
     t1 = tk.Label(root, text="Seus lucros")
     t1.pack()
 
-    b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root))
+    b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root, nomeCliente))
     b3.pack()
 
     b2 = tk.Button(root, text="a", command=lambda:tel_adm(root))
@@ -239,7 +240,7 @@ def tel_acc(root, nomeCliente):
     t1.pack()
 
 
-    b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv(root))
+    b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv(root, nomeCliente))
     b1.pack()
 
     b2 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
