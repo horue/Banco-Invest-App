@@ -11,6 +11,8 @@ cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTER
 cursor.execute(f"INSERT INTO clientes VALUES (123, 123)")
 
 cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome STR)")
+cursor.execute(f"INSERT INTO investimentos VALUES (Apple)")
+
 
 
 
