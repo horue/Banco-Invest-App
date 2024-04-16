@@ -15,6 +15,33 @@ cursor.execute(f"INSERT INTO investimentos VALUES ('Apple')")
 
 
 
+def re_invB(root, nomeInvestimento):
+    cursor.execute(f"DELETE FROM investimentos WHERE nome='{nomeInvestimento}'")
+    connection.commit
+    re_inv(root)
+
+
+def re_inv(root):
+    for widget in root.winfo_children():
+        widget.destroy()
+    
+    t1 = tk.Label(root, text='')
+    t1.pack()
+
+    t2 = tk.Label(root, text='Remover Investimento')
+    t2.pack()
+
+    cursor.execute("SELECT nome FROM investimentos")
+    investimento=cursor.fetchall()
+
+    for investimentos in investimento:
+        nomeInvestimento = investimentos[0]
+        b1=tk.Button(root, text=nomeInvestimento, command=lambda:re_invB(root, nomeInvestimento))
+        b1.pack()
+
+    b2 = tk.Button(root, text="Voltar", command=lambda:tel_adm(root))
+    b2.pack()
+
 
 
 def add_nc(e1, e2, e3, e4, e5):
@@ -169,9 +196,11 @@ def tel_adm(root):
     b2 = tk.Button(root, text="Adicionar Novo Cliente", command=lambda:tela_nc(root))
     b2.pack()
 
-
-    b3 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+    b3 = tk.Button(root, text="Remover Investimento", command=lambda:re_inv(root))
     b3.pack()
+
+    b5 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+    b5.pack()
 
 
 
