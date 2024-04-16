@@ -7,8 +7,8 @@ connection=sqlite3.connect("acc.db")
 
 cursor=connection.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER, renda REAL)")
-cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'Haroldo', 12332112332, 15000.00)")
+cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER, renda INTERGER)")
+cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'Haroldo', 12332112332, 15000)")
 
 cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT)")
 cursor.execute(f"INSERT INTO investimentos VALUES ('Apple')")
