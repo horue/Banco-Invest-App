@@ -9,6 +9,8 @@ cursor=connection.cursor()
 
 cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER, renda INTERGER, f STR)")
 cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'Haroldo', 12332112332, 15000, 'adm')")
+cursor.execute(f"INSERT INTO clientes VALUES (456, 456, 'Olivia', 235217563, 15000, 'c')")
+
 
 cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT, valor INTERGER)")
 cursor.execute(f"INSERT INTO investimentos VALUES ('Apple', 129)")
