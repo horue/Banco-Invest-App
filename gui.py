@@ -16,6 +16,12 @@ cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT, valor INTER
 cursor.execute(f"INSERT INTO investimentos VALUES ('Apple', 129)")
 
 
+def re_cliB(root, nomeCliente):
+    cursor.execute(f"DELETE FROM clientes WHERE nome='{nomeCliente}'")
+    connection.commit
+    re_cli(root)
+
+
 
 def re_cli(root):
     for widget in root.winfo_children():
@@ -32,7 +38,7 @@ def re_cli(root):
 
     for clientes in cliente:
         nomeCliente = clientes[0]
-        b1=tk.Button(root, text=nomeCliente, command=lambda:re_invB(root, nomeCliente))
+        b1=tk.Button(root, text=nomeCliente, command=lambda:re_cliB(root, nomeCliente))
         b1.pack()
 
     b2 = tk.Button(root, text="Voltar", command=lambda:tel_adm(root))
