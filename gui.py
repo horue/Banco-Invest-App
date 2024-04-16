@@ -27,12 +27,11 @@ def add_nc(e1, e2, e3, e4, e5):
     cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}', {cpf}, {renda})")
     connection.commit
     resultado = cursor.fetchone()
+    mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
     if resultado:
         print('Foi')
-        mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
     else:
         print('Não foi')
-        mb.showinfo('Erro.' f'Ocorreu um erro ao tentar criar a conta do(a) cliente {nome}. Tente novamente.')
 
 
 def add_ni(e1):
