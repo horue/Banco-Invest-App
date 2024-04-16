@@ -168,7 +168,7 @@ def tel_adm(root):
 
 
 
-def tela_inv2(root, nomeInvestimento):
+def tela_inv2(root, nomeInvestimento, nomeCliente, rendaCliente):
     for widget in root.winfo_children():
         widget.destroy()
     
@@ -186,13 +186,13 @@ def tela_inv2(root, nomeInvestimento):
     t1 = tk.Label(root, text="Seus lucros")
     t1.pack()
 
-    b1 = tk.Button(root, text="Voltar", command=lambda:tela_inv(root))
+    b1 = tk.Button(root, text="Voltar", command=lambda:tela_inv(root, nomeCliente, rendaCliente))
     b1.pack()
     
 
         
 
-def tela_inv(root, nomeCliente):
+def tela_inv(root, nomeCliente, rendaCliente):
     for widget in root.winfo_children():
         widget.destroy()
     
@@ -204,13 +204,13 @@ def tela_inv(root, nomeCliente):
 
     for investimentos in investimento:
         nomeInvestimento = investimentos[0]
-        b1=tk.Button(root, text=nomeInvestimento, command=lambda:tela_inv2(root, nomeInvestimento))
+        b1=tk.Button(root, text=nomeInvestimento, command=lambda:tela_inv2(root, nomeInvestimento, nomeCliente, rendaCliente))
         b1.pack()
 
     t1 = tk.Label(root, text="Seus lucros")
     t1.pack()
 
-    b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root, nomeCliente))
+    b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root, nomeCliente, rendaCliente))
     b3.pack()
 
     b2 = tk.Button(root, text="a", command=lambda:tel_adm(root))
@@ -221,7 +221,7 @@ def tela_inv(root, nomeCliente):
 
 
 
-def tel_acc(root, nomeCliente):
+def tel_acc(root, nomeCliente, rendaCliente):
     print('2')
     for widget in root.winfo_children():
         widget.destroy()
@@ -239,7 +239,13 @@ def tel_acc(root, nomeCliente):
     t1.pack()
 
 
-    b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv(root, nomeCliente))
+    b1 = tk.Button(root, text="Acessar seus investimentos", command=lambda:tela_inv(root, nomeCliente, rendaCliente))
+
+    if rendaCliente < 15000:
+        b1.config(state=tk.DISABLED)
+    else:
+        b1.config(state=tk.NORMAL)
+
     b1.pack()
 
     b2 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
@@ -251,13 +257,14 @@ def entrar(e1, e2, login_fame, root):
     print('1')
     conta = e1.get()
     senha = e2.get()
-    cursor.execute(f"SELECT nome FROM clientes WHERE(conta={conta} AND senha={senha})")
+    cursor.execute(f"SELECT nome, renda FROM clientes WHERE(conta={conta} AND senha={senha})")
     resultado = cursor.fetchone()
     if resultado:
         nomeCliente = resultado[0]
+        rendaCliente = resultado[1]
         print('Foi')
         login_fame.pack_forget
-        tel_acc(root, nomeCliente)
+        tel_acc(root, nomeCliente, rendaCliente)
     else:
         print('Não foi')
         mb.showinfo('Erro', 'Conta ou senha incorretos.')
