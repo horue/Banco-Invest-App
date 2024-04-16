@@ -24,7 +24,7 @@ def add_nc(e1, e2, e3, e4, e5):
     senha = e3.get()
     cpf = e4.get()
     renda = e5.get()
-    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}', {cpf}, {renda}, c)")
+    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}', {cpf}, {renda}, 'c')")
     connection.commit
     resultado = cursor.fetchone()
     mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
@@ -75,9 +75,12 @@ def tela_ni(root):
     b1 = tk.Button(root, text="Adicionar Investimento", command=lambda:add_ni(e1))
     b1.pack()
 
-    
-    b2 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+            
+    b2 = tk.Button(root, text="Voltar", command=lambda:tel_adm(root))
     b2.pack()
+    
+    b3 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+    b3.pack()
 
 
 
@@ -133,9 +136,13 @@ def tela_nc(root):
     b1 = tk.Button(root, text="Adicionar Cliente", command=lambda:add_nc(e1, e2, e3, e4, e5))
     b1.pack()
 
-    
-    b2 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+        
+    b2 = tk.Button(root, text="Voltar", command=lambda:tel_adm(root))
     b2.pack()
+
+    
+    b3 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
+    b3.pack()
 
 
 def tel_adm(root):
