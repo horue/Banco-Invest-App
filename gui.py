@@ -10,8 +10,8 @@ cursor=connection.cursor()
 cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER, renda INTERGER, f STR)")
 cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'Haroldo', 12332112332, 15000, 'adm')")
 
-cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT)")
-cursor.execute(f"INSERT INTO investimentos VALUES ('Apple')")
+cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT, valor INTERGER)")
+cursor.execute(f"INSERT INTO investimentos VALUES ('Apple', 129)")
 
 
 
@@ -61,10 +61,11 @@ def add_nc(e1, e2, e3, e4, e5):
         print('Não foi')
 
 
-def add_ni(e1):
+def add_ni(e1, e2):
     print('teste')
     nome = e1.get()
-    cursor.execute(f"INSERT INTO investimentos VALUES ('{nome}')")
+    valor = e2.get()
+    cursor.execute(f"INSERT INTO investimentos VALUES ('{nome}', {valor})")
     connection.commit
     mb.showinfo('Sucesso.', f'O investimento {nome} foi adicionado!')
 
@@ -99,7 +100,7 @@ def tela_ni(root):
     e2.pack()
 
 
-    b1 = tk.Button(root, text="Adicionar Investimento", command=lambda:add_ni(e1))
+    b1 = tk.Button(root, text="Adicionar Investimento", command=lambda:add_ni(e1, e2))
     b1.pack()
 
             
