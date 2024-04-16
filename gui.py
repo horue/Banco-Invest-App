@@ -233,6 +233,9 @@ def tel_adm(root):
     b3 = tk.Button(root, text="Remover Investimento", command=lambda:re_inv(root))
     b3.pack()
 
+    b4 = tk.Button(root, text="Remover Cliente", command=lambda:re_cli(root))
+    b4.pack()
+
     b5 = tk.Button(root, text="Voltar à tela inicial", command=lambda:login(root))
     b5.pack()
 
