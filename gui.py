@@ -7,8 +7,8 @@ connection=sqlite3.connect("acc.db")
 
 cursor=connection.cursor()
 
-cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER, renda INTERGER)")
-cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'Haroldo', 12332112332, 15000)")
+cursor.execute("CREATE TABLE IF NOT EXISTS clientes (conta INTERGER, senha INTERGER, nome STR, cpf INTERGER, renda INTERGER, f STR)")
+cursor.execute(f"INSERT INTO clientes VALUES (123, 123, 'Haroldo', 12332112332, 15000, 'adm')")
 
 cursor.execute("CREATE TABLE IF NOT EXISTS investimentos (nome TEXT)")
 cursor.execute(f"INSERT INTO investimentos VALUES ('Apple')")
@@ -24,7 +24,7 @@ def add_nc(e1, e2, e3, e4, e5):
     senha = e3.get()
     cpf = e4.get()
     renda = e5.get()
-    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}', {cpf}, {renda})")
+    cursor.execute(f"INSERT INTO clientes VALUES ({conta}, {senha}, '{nome}', {cpf}, {renda}, c)")
     connection.commit
     resultado = cursor.fetchone()
     mb.showinfo("Sucesso", f"A conta do cliente {nome} foi criada!")
@@ -257,14 +257,18 @@ def entrar(e1, e2, login_fame, root):
     print('1')
     conta = e1.get()
     senha = e2.get()
-    cursor.execute(f"SELECT nome, renda FROM clientes WHERE(conta={conta} AND senha={senha})")
+    cursor.execute(f"SELECT nome, renda, f FROM clientes WHERE(conta={conta} AND senha={senha})")
     resultado = cursor.fetchone()
     if resultado:
         nomeCliente = resultado[0]
         rendaCliente = resultado[1]
-        print('Foi')
-        login_fame.pack_forget
-        tel_acc(root, nomeCliente, rendaCliente)
+        função = resultado[2]
+        if função == 'adm':
+            tel_adm(root)
+        else:
+            print('Foi')
+            login_fame.pack_forget
+            tel_acc(root, nomeCliente, rendaCliente)
     else:
         print('Não foi')
         mb.showinfo('Erro', 'Conta ou senha incorretos.')
