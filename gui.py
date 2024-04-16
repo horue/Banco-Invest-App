@@ -213,10 +213,6 @@ def tela_inv(root, nomeCliente, rendaCliente):
     b3 = tk.Button(root, text="Voltar", command=lambda:tel_acc(root, nomeCliente, rendaCliente))
     b3.pack()
 
-    b2 = tk.Button(root, text="a", command=lambda:tel_adm(root))
-    b2.pack()
-    
-
 
 
 
