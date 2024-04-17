@@ -1,3 +1,4 @@
 Add a screen to select what do you want do delete
 Add a management option
 Add a weekly report using google gemini api
+Update visual part
